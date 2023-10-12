@@ -9,6 +9,7 @@
       project_src: "{{ HOME_ASSISTANT_PATH }}/docs"
       files: "docker-compose.yml"
       state: present
+      project_name: homeassistant
       pull: true
     when: home_assistant_stat_docker_compose_file.stat.exists
 
