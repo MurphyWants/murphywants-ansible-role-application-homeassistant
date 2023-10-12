@@ -1,0 +1,19 @@
+---
+  - name: Create folders
+    ansible.builtin.file:
+      path: "{{ item }}"
+      state: directory
+    loop:
+      - "{{ HOME_ASSISTANT_PATH }}"
+      - "{{ HOME_ASSISTANT_PATH }}/volumes"
+      - "{{ HOME_ASSISTANT_PATH }}/volumes/config"
+      - "{{ HOME_ASSISTANT_PATH }}/backups"
+      - "{{ HOME_ASSISTANT_PATH }}/scripts"
+      - "{{ HOME_ASSISTANT_PATH }}/docs"
+
+
+  - name: Copy docker compose file
+    ansible.builtin.template:
+      src: "{{ role_path }}/templates/home_assistant_docker-compose.yml.j2"
+      dest: "{{ HOME_ASSISTANT_PATH }}/docs/docker-compose.yml"
+

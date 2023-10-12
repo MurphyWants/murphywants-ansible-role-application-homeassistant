@@ -1,2 +1,16 @@
 ---
-# TODO
+  - name: Prestage Tasks
+    ansible.builtin.import_tasks:
+      file: setup_0_prestage.yml
+  
+  - name: Setup ZFS
+    ansible.builtin.import_tasks:
+      file: setup_1_partitioning_zfs.yml
+
+  - name: Copy files
+    ansible.builtin.import_tasks:
+      file: setup_2_copy-files.yml
+
+  - name: Start the app 
+    ansible.builtin.import_tasks:
+      file: tag_start.yml

@@ -1,0 +1,21 @@
+---
+version: "2.1"
+services:
+  homeassistant:
+    image: lscr.io/linuxserver/homeassistant:{{ HOME_ASSISTANT_CONTAINER_VERSION }}
+    container_name: homeassistant
+    network_mode: host
+    environment:
+      - PUID={{ HOME_ASSISTANT_PUID }}
+      - PGID={{ HOME_ASSISTANT_GUID }}
+      - TZ={{ HOME_ASSISTANT_TIMEZONE }}
+    volumes:
+      - {{ HOME_ASSISTANT_PATH }}/volumes/config:/config
+    restart: unless-stopped
+{% if HOME_ASSISTANT_DEVICE_MAPPING is defined and HOME_ASSISTANT_DEVICE_MAPPING|length > 0 %}
+    devices:
+{% for device in HOME_ASSISTANT_DEVICE_MAPPING %}
+      - {{ device }}:{{ device }}
+{% endfor %}
+{% endif %}
+

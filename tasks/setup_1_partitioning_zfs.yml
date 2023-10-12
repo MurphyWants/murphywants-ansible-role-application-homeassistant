@@ -1,0 +1,7 @@
+---
+  - name: Create freshrss ZFS volume
+    community.general.zfs:
+      name: "{{ HOME_ASSISTANT_STORAGE_ZFS_POOL }}/{{ HOME_ASSISTANT_STORAGE_ZFS_FS }}"
+      state: present
+      extra_zfs_properties:
+        mountpoint: "{{ HOME_ASSISTANT_PATH }}"

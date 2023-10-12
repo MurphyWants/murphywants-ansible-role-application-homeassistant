@@ -1,2 +1,13 @@
 ---
-# TODO
+  - name: Check if docker-compose file exists
+    ansible.builtin.stat:
+      path: "{{ HOME_ASSISTANT_PATH }}/docs/docker-compose.yml"
+    register: home_assistant_stat_docker_compose_file
+
+  - name: Docker Compose Stop Running Apps
+    community.docker.docker_compose:
+      project_src: "{{ HOME_ASSISTANT_PATH }}/docs"
+      files: "docker-compose.yml"
+      state: absent
+    when: home_assistant_stat_docker_compose_file.stat.exists
+    failed_when: false

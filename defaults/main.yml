@@ -1,1 +1,16 @@
-# variable: True
+---
+HOME_ASSISTANT_PUID: 10002
+HOME_ASSISTANT_GUID: 10002
+#HOME_ASSISTANT_HTTP_PORT: 8123 # not use in host mode
+HOME_ASSISTANT_PATH: "/mnt/homeassistant"
+HOME_ASSISTANT_STORAGE_ZFS_POOL: 'apps_pool'
+HOME_ASSISTANT_STORAGE_ZFS_FS: 'home_assistant'
+HOME_ASSISTANT_TIMEZONE: "America/New_York"
+HOME_ASSISTANT_CONTAINER_VERSION: 'latest'
+HOME_ASSISTANT_DEVICE_MAPPING: []
+# A list of device paths to pass through to the docker container
+# Example to pass through a device:
+# HOME_ASSISTANT_DEVICE_MAPPING: 
+#   - /dev/ttyACM0
+#
+# This will add device mapping to the docker compose to map /dev/ttyACM0:/dev/ttyACM0
