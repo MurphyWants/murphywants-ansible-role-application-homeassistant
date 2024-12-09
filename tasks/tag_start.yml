@@ -5,11 +5,11 @@
     register: home_assistant_stat_docker_compose_file
 
   - name: Docker Compose Start Apps
-    community.docker.docker_compose:
+    community.docker.docker_compose_v2:
       project_src: "{{ HOME_ASSISTANT_PATH }}/docs"
       files: "docker-compose.yml"
       state: present
       project_name: homeassistant
-      pull: true
+      pull: always
     when: home_assistant_stat_docker_compose_file.stat.exists
 
